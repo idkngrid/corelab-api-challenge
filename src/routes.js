@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import UserController from './controllers/UserController';
+import VehicleController from './controllers/VehicleController';
 
 const router = Router();
 
-router.post("/vehicle", UserController.createVehicle);
-router.get("/vehicles", UserController.getAllVehicles);
-router.put("/vehicle/:id", UserController.updateVehicle);
-router.delete("/vehicle/:id", UserController.deleteVehicle);
+router.post("/vehicle", VehicleController.createVehicle);
+router.get("/vehicles", VehicleController.getAllVehicles);
+router.put("/vehicle/:id", VehicleController.updateVehicle);
+router.delete("/vehicle/:id", VehicleController.deleteVehicle);
 
 export { router };
