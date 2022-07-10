@@ -34,6 +34,16 @@ export default {
         }
     },
 
+    async getVehicle(req, res) {
+        try {
+            const { id } = req.params;
+            const vehicle = await prisma.vehicle.findUnique({where: {id: Number(id)}});
+            return res.json(vehicle);
+        } catch (error) {
+            return res.json({ error });
+        }
+    },
+
     async updateVehicle(req, res) {
         try {
             const { id } = req.params;
