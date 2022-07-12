@@ -11,12 +11,15 @@ datasource db {
 }
 
 model Vehicle {
-  id          Int @id @default(autoincrement())
-  title       String
+  id          Int      @id @default(autoincrement())
+  name        String
   description String
-  color       String
-  year        Int
+  brand       String
   plate       String
-  price       Float
-  isFavorite  Boolean
+  year        String
+  color       String
+  price       String    
+  isFavorite  Boolean   @default(false)
 }
+
+

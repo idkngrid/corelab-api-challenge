@@ -5,12 +5,13 @@ const prisma = new PrismaClient();
 export default {
     async createVehicle(req, res) {
         try {
-            const { title, description, color, year, plate, price, isFavorite } = req.body
+            const { name, description, brand, color, year, plate, price, isFavorite } = req.body
         
             const vehicle = await prisma.vehicle.create({
                 data: {
-                    title,
+                    name,
                     description,
+                    brand,
                     color,
                     year,
                     plate,
@@ -47,7 +48,7 @@ export default {
     async updateVehicle(req, res) {
         try {
             const { id } = req.params;
-            const { title, description, color, year, plate, price, isFavorite } = req.body;
+            const { name, description, brand, color, year, plate, price, isFavorite } = req.body;
 
             let vehicle = await prisma.vehicle.findUnique({where: {id: Number(id)}});
 
@@ -55,7 +56,7 @@ export default {
 
             vehicle = await prisma.vehicle.update({
                 where: { id: Number(id) }, 
-                data: { title, description, color, year, plate, price, isFavorite },
+                data: { name, description, brand, color, year, plate, price, isFavorite },
             });
 
             return res.json(vehicle);
@@ -76,7 +77,7 @@ export default {
                 where: { id: Number(id) }, 
             });
 
-            return res.json({ message: "Usuário deletado com sucesso!" });
+            return res.json({ message: "Veículo deletado com sucesso!" });
         } catch (error) {
             return res.json({ error });
         }
